@@ -415,6 +415,6 @@ class UGATIT(object) :
    # def forward(self, x):
     #    out = self.genA2B(x)
     #    out = nn.functional.interpolate(out, scale_factor=2, 
-                                        mode='bilinear', align_corners=True)
+     #                                   mode='bilinear', align_corners=True)
    #     out = torch.nn.functional.softmax(out, dim=1)
     #    return out
