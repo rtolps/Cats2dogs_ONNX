@@ -76,13 +76,15 @@ def main():
         print(" [*] Training finished!")
 
     if args.phase == 'test' :
+        model= gan.genA2B()
         random_input = torch.randn(3, 3, 256, 256, dtype=torch.float32)
           # you can add however many inputs your model or task requires
  
-        input_names = ["realA"]
-        output_names = ["fakeA2B"]
+        input_names = ["real_A"]
+        output_names = ["fake_A2B"]
+
  
-        torch.onnx.export(gan, random_input, '/content/UGATIT-pytorch/model.onnx', verbose=False, 
+        torch.onnx.export(model, random_input, '/content/UGATIT-pytorch/model.onnx', verbose=False, 
                           input_names=input_names, output_names=output_names, 
                           opset_version=11)        
         print(" [*] Test finished!")
