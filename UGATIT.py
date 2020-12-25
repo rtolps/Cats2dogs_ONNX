@@ -412,9 +412,9 @@ class UGATIT(object) :
                                   RGB2BGR(tensor2numpy(denorm(fake_B2A2B[0])))), 0)
 
             cv2.imwrite(os.path.join(self.result_dir, self.dataset, 'test', 'B2A_%d.png' % (n + 1)), B2A * 255.0)
-   # def forward(self, x):
-    #    out = self.genA2B(x)
-    #    out = nn.functional.interpolate(out, scale_factor=2, 
-     #                                   mode='bilinear', align_corners=True)
-   #     out = torch.nn.functional.softmax(out, dim=1)
-    #    return out
+    def forward(self, x):
+        out = self.genA2B(x)
+        out = nn.functional.interpolate(out, scale_factor=2, 
+                                        mode='bilinear', align_corners=True)
+        out = torch.nn.functional.softmax(out, dim=1)
+        return out
