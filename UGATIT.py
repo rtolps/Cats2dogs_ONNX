@@ -413,6 +413,7 @@ class UGATIT(object) :
 
             cv2.imwrite(os.path.join(self.result_dir, self.dataset, 'test', 'B2A_%d.png' % (n + 1)), B2A * 255.0)
     def forward(self, input):
+        #below where it sets out should reference a specific tensor!!
         out = self.genA2B(input)
         out = nn.functional.interpolate(out, scale_factor=2, 
                                         mode='bilinear', align_corners=True)
