@@ -9,7 +9,7 @@ class Model(object) :
     def __init__(self):
         super().__init__()
         self.genA2B = ResnetGenerator(input_nc=3, output_nc=3, 
-                                      ngf=64, n_blocks=4, img_size=256, light=True).to('cpu')
+                                      ngf=16, n_blocks=4, img_size=256, light=True).to('cpu') #origional ngf was 64
 
     def forward(self, x):
         out = self.genA2B(x)
