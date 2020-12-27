@@ -14,7 +14,7 @@ class Model(object) :
     def forward(self, x):
         out = self.genA2B(x)
         out = nn.functional.interpolate(out, scale_factor=2, 
-                                        mode='bilinear', align_corners=True)
+                                        mode='nearest')
         out = torch.nn.functional.softmax(out, dim=1)
         return out
 model = Model()
@@ -29,4 +29,4 @@ output_names = ["fake_A2B"]
  
 torch.onnx.export(model.genA2B, random_input, 'model.onnx', verbose=False, 
                   input_names=input_names, output_names=output_names, 
-                  opset_version=11)
+                  opset_version=9)
